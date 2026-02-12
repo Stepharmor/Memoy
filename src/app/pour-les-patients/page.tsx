@@ -11,30 +11,37 @@ export default function PourLesPatientsPage() {
     <div className="relative overflow-hidden bg-transparent text-slate-50">
       <main className="relative z-10 pb-32">
         <section
-          className="mx-auto flex max-w-[1600px] flex-col bg-contain bg-top bg-no-repeat px-6 pt-0 pb-24 lg:px-10 xl:px-16"
-          style={{ backgroundImage: "url('/img/PourLesPatients/BackgroundHero.webp')" }}
+          className="relative flex min-h-screen w-full flex-col bg-cover bg-top bg-no-repeat pt-0 pb-24"
+          style={{
+            backgroundImage: "url('/img/PourLesPatients/BackgroundHero.webp')",
+            backgroundSize: "100% auto",
+            backgroundPosition: "top center",
+          }}
         >
-          <Header />
+          <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-10 xl:px-16">
+            <Header />
 
-          {/* Hero – Pour les patients */}
-          <div className="mt-32 flex flex-col items-center text-center">
-            
-              <div className="mx-auto max-w-4xl space-y-6">
-                <h1 className="text-[40px] font-normal leading-tight tracking-tight text-white sm:text-[52px] lg:text-[64px]">
-                Je t'aide au quotidien
-                </h1>
-                <h2 className="text-[35px] leading-relaxed text-slate-200/85">
-                Je suis là pour rendre chaque moment plus simple, plus rassurant.
-                </h2>
-              </div>
-           
+            {/* Hero – Pour les patients */}
+            <div className="mt-32 flex flex-col items-center text-center">
+              
+                <div className="mx-auto max-w-4xl space-y-6">
+                  <h1 className="text-[40px] font-normal leading-tight tracking-tight text-white sm:text-[52px] lg:text-[64px]">
+                  Je t'aide au quotidien
+                  </h1>
+                  <h2 className="text-[35px] leading-relaxed text-slate-200/85">
+                  Je suis là pour rendre chaque moment plus simple, plus rassurant.
+                  </h2>
+                </div>
+             
+            </div>
           </div>
 
           {/* matin */}
-          <section
-            className="relative mt-32 bg-no-repeat bg-center bg-[length:80%_auto] px-6 py-32 lg:px-10 xl:px-16"
-            style={{ backgroundImage: "url('/img/PourLesPatients/Sunrise.webp')" }}
-          >
+          <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-10 xl:px-16">
+            <section
+              className="relative mt-32 bg-no-repeat bg-center bg-[length:80%_auto] py-32"
+              style={{ backgroundImage: "url('/img/PourLesPatients/Sunrise.webp')" }}
+            >
             
               <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
                 <div className="space-y-3">
@@ -48,10 +55,12 @@ export default function PourLesPatientsPage() {
                 </div>
               </div>
            
-          </section>
+            </section>
+          </div>
 
           {/* Trois cartes d'accompagnement – empilées puis déployées */}
-          <section className="mt-24 px-6 lg:px-10 xl:px-16">
+          <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-10 xl:px-16">
+            <section className="mt-24">
             <div className="mx-auto grid max-w-5xl gap-8 pt-4 sm:grid-cols-3">
               {([
                 {
@@ -288,7 +297,9 @@ export default function PourLesPatientsPage() {
                 </article>
               </ScrollReveal>
             ))}
-          </div>
+            </div>
+          </section>
+        </div>
         </section>
 
         {/* Section finale – titre + sous-titre */}
@@ -370,8 +381,6 @@ export default function PourLesPatientsPage() {
 
 
           </section>
-
-        </section>
 
           <ScrollReveal>
             <FlowerNavigation />

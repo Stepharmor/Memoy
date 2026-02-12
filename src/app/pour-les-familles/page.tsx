@@ -15,20 +15,21 @@ export default function PourLesFamillesPage() {
 
       <main className="relative z-10 pb-32">
         {/* Hero : hauteur calée sur l'image de fond */}
-        <section className="w-full pt-0 pb-24">
-          <div className="mx-auto flex max-w-[1600px] flex-col px-0 lg:px-0 xl:px-0">
+        <section className="relative w-full pt-0 pb-24">
+          <div className="absolute left-0 right-0 top-6 z-50 mx-auto w-full max-w-[1600px] px-6 lg:px-10 xl:px-16">
             <Header />
+          </div>
 
-            <div className="mt-16 flex flex-col items-center text-center lg:mt-24">
-              {/* Wrapper qui prend toute la largeur, hauteur auto basée sur l'image */}
-              <div className="relative w-full">
-                {/* Image de fond en <img> pour que la hauteur du hero suive exactement celle de l'image */}
-                <img
-                  src="/img/PourLesFamilles/BackgroundHero.webp"
-                  alt=""
-                  aria-hidden="true"
-                  className="block w-full h-auto"
-                />
+          <div className="flex flex-col items-center text-center">
+            {/* Wrapper qui prend toute la largeur, hauteur auto basée sur l'image */}
+            <div className="relative w-full">
+              {/* Image de fond en <img> pour que la hauteur du hero suive exactement celle de l'image */}
+              <img
+                src="/img/PourLesFamilles/BackgroundHero.webp"
+                alt=""
+                aria-hidden="true"
+                className="block w-full h-auto object-cover"
+              />
                 {/* Mains : reveal au chargement, après le texte */}
                 <ScrollReveal
                   trigger="mount"
@@ -71,7 +72,7 @@ export default function PourLesFamillesPage() {
                   />
                 </ScrollReveal>
                 {/* Contenu centré par-dessus */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center px-6 lg:px-10 xl:px-16 -translate-y-12 lg:translate-y-30">
+                <div className="absolute inset-0 flex flex-col items-center justify-center px-6 lg:px-10 xl:px-16 -translate-y-12 lg:-translate-y-40 xl:-translate-y-48 2xl:-translate-y-64">
                   <div className="relative w-full text-center">
                     <ScrollReveal trigger="mount" direction="up">
                       <div className="space-y-4">
@@ -84,11 +85,16 @@ export default function PourLesFamillesPage() {
                         </p>
                       </div>
                     </ScrollReveal>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
-                    
-                  </div>{/* Trois cartes d'accompagnement – empilées puis déployées */}
-<section className="mt-92 px-6 lg:px-10 xl:px-16">
-<ScrollReveal direction="up" delay={0.1}>
+          {/* Trois cartes d'accompagnement – empilées puis déployées */}
+          <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-10 xl:px-16">
+            <section className="mt-24">
+              <ScrollReveal direction="up" delay={0.1}>
               <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
                 <div className="space-y-3">
                   <h2 className="text-[32px] sm:text-[32px] font-normal tracking-tight text-white">
@@ -174,18 +180,12 @@ export default function PourLesFamillesPage() {
                 </motion.div>
               ))}
             </div>
-          </section>
-                </div>
-              </div>
-            </div>
-            
+            </section>
           </div>
 
-
-        </section>
-
         {/* Section familles : titre + sous-titre au-dessus, puis photo + 3 briques */}
-        <section className="mt-32 px-6 lg:px-10 xl:px-16">
+        <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-10 xl:px-16">
+          <section className="mt-32">
           <div className="mx-auto max-w-6xl space-y-10">
             {/* Titre + sous-titre pleine largeur */}
             <div className="text-center lg:text-left">
@@ -277,7 +277,8 @@ export default function PourLesFamillesPage() {
               </div>
             </div>
           </div>
-        </section>
+          </section>
+        </div>
 
         {/* Fonctionnement hors connexion */}
         <section

@@ -53,9 +53,9 @@ export default function Header() {
           })}
         </nav>
 
-        <button className="ml-2 rounded-[40px] bg-white/20 px-5 py-3 text-[16px] font-medium text-white shadow-sm">
+        <a href="mailto:contact@memoy.app" className="ml-2 rounded-[40px] bg-white/20 px-5 py-3 text-[16px] font-medium text-white shadow-sm hover:bg-white/30 transition">
           Nous contacter
-        </button>
+        </a>
       </div>
     </div>
   );

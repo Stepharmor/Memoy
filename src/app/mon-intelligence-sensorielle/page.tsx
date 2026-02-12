@@ -20,19 +20,20 @@ export default function MonIntelligenceSensoriellePage() {
       <main className="relative z-10 pb-32">
         {/* Hero – Mon intelligence sensorielle */}
         <section
-          className="mx-auto flex min-h-screen max-w-[1600px] flex-col bg-top bg-no-repeat px-6 pt-0 lg:px-10 xl:px-16"
+          className="relative flex min-h-screen w-full flex-col bg-cover bg-top bg-no-repeat pt-0 pb-24"
           style={{
             backgroundImage:
-              "url('/img/MonIntelligenceSensorielle/BackgroundHero.png')",
-            // Adapter uniquement à la largeur de la page (100% largeur, hauteur auto)
+              "url('/img/MonIntelligenceSensorielle/BackgroundHero.webp')",
             backgroundSize: "100% auto",
             backgroundPosition: "top center",
-            backgroundRepeat: "no-repeat",
           }}
         >
-          <Header />
+          <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-10 xl:px-16">
+            <Header />
+          </div>
 
-          <div className="relative mt-24 flex flex-1 flex-col items-center text-center lg:mt-32">
+          <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-10 xl:px-16">
+            <div className="relative mt-24 flex flex-1 flex-col items-center text-center lg:mt-32">
             {/* Effet HalloIntelligence flottant sous le header */}
             {[1, 2, 3].map((num, index) => {
               const baseLeft = `calc(30% + ${(index - 1) * 40}px)`;
@@ -47,7 +48,7 @@ export default function MonIntelligenceSensoriellePage() {
               return (
                 <motion.img
                   key={num}
-                  src={`/img/home/HalloIntelligence${num}.png`}
+                  src={`/img/home/HalloIntelligence${num}.webp`}
                   alt=""
                   aria-hidden="true"
                   className="pointer-events-none hallo-intelligence-top hallo-intelligence-left w-[520px] h-auto sm:w-[560px] lg:w-[1200px]"
@@ -73,20 +74,21 @@ export default function MonIntelligenceSensoriellePage() {
                 Mon intelligence <br /> sensorielle
               </h1>
             </div>
-            <div delay={0.1} className="relative z-10">
-              <p className="mt-6 max-w-3xl text-[20px] leading-relaxed text-slate-200/90 sm:text-[32px]">
-                Pas de clique sur des boutons.
-                <br />
-                J’écoute et j’observe pour comprendre.
-              </p>
+            
+              <div className="relative z-10">
+                <p className="mt-6 max-w-3xl text-[20px] leading-relaxed text-slate-200/90 sm:text-[32px]">
+                  Pas de clique sur des boutons.
+                  <br />
+                  J’écoute et j’observe pour comprendre.
+                </p>
+              </div>
+            
             </div>
           </div>
 
-
-            
-
-            {/* Bloc principal */}
-            <section className="mx-auto mt-24 max-w-5xl px-6 lg:px-10 xl:px-16">
+          {/* Bloc principal */}
+          <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-10 xl:px-16">
+            <section className="mx-auto mt-24 max-w-5xl">
             {/* Ligne verticale + points + blocs */}
 
           <div className="relative flex flex-col items-center">
@@ -108,7 +110,7 @@ export default function MonIntelligenceSensoriellePage() {
                  zIndex: 5,
                 
               }}
-                src="/img/MonIntelligenceSensorielle/pointOrange.png"
+                src="/img/MonIntelligenceSensorielle/pointOrange.webp"
                 alt=""
                 aria-hidden="true"
                 className="h-12 w-12"
@@ -124,7 +126,7 @@ export default function MonIntelligenceSensoriellePage() {
               <article className="relative w-full rounded-[32px] bg-white/5 px-6 py-10 text-left text-slate-50 backdrop-blur-[32px] shadow-[0_40px_120px_rgba(0,0,0,0.75)] sm:px-10 lg:px-14">
                 {/* Lueur de fond sous le bloc */}
                 <img
-                  src="/img/CardBackground.png"
+                  src="/img/CardBackground.webp"
                   alt=""
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-0 h-full w-full rounded-[32px] object-cover opacity-40"
@@ -192,7 +194,7 @@ export default function MonIntelligenceSensoriellePage() {
                        top: "-30px",
                        zIndex: 5,
                     }}
-                  src="/img/MonIntelligenceSensorielle/pointPink.png"
+                  src="/img/MonIntelligenceSensorielle/pointPink.webp"
                   alt=""
                   aria-hidden="true"
                   className="relative z-10 h-12 w-12"
@@ -210,7 +212,7 @@ export default function MonIntelligenceSensoriellePage() {
               <article className="-mt-16 relative w-full rounded-[32px] bg-white/5 px-6 py-10 text-left text-slate-50 backdrop-blur-[32px] shadow-[0_40px_120px_rgba(0,0,0,0.75)] sm:px-10 lg:px-14">
                 {/* Lueur de fond sous le bloc */}
                 <img
-                  src="/img/CardBackgroundPink.png"
+                  src="/img/CardBackgroundPink.webp"
                   alt=""
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-0 h-full w-full rounded-[32px] object-cover opacity-40"
@@ -268,7 +270,7 @@ export default function MonIntelligenceSensoriellePage() {
                        top: "-30px",
                        zIndex: 5,
                     }}
-                  src="/img/MonIntelligenceSensorielle/pointBlue.png"
+                  src="/img/MonIntelligenceSensorielle/pointBlue.webp"
                   alt=""
                   aria-hidden="true"
                   className="relative z-10 h-12 w-12"
@@ -286,7 +288,7 @@ export default function MonIntelligenceSensoriellePage() {
               <article className="-mt-16 relative w-full rounded-[32px] bg-white/5 px-6 py-10 text-left text-slate-50 backdrop-blur-[32px] shadow-[0_40px_120px_rgba(0,0,0,0.75)] sm:px-10 lg:px-14">
                 {/* Lueur de fond sous le bloc */}
                 <img
-                  src="/img/CardBackground.png"
+                  src="/img/CardBackground.webp"
                   alt=""
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-0 h-full w-full rounded-[32px] object-cover opacity-40"
@@ -344,7 +346,7 @@ export default function MonIntelligenceSensoriellePage() {
                        top: "-30px",
                        zIndex: 5,
                     }}
-                  src="/img/MonIntelligenceSensorielle/pointOrange.png"
+                  src="/img/MonIntelligenceSensorielle/pointOrange.webp"
                   alt=""
                   aria-hidden="true"
                   className="relative z-10 h-12 w-12"
@@ -361,7 +363,7 @@ export default function MonIntelligenceSensoriellePage() {
               <article className="-mt-16 relative w-full rounded-[32px] bg-white/5 px-6 py-10 text-left text-slate-50 backdrop-blur-[32px] shadow-[0_40px_120px_rgba(0,0,0,0.75)] sm:px-10 lg:px-14">
                 {/* Lueur de fond sous le bloc */}
                 <img
-                  src="/img/CardBackground.png"
+                  src="/img/CardBackground.webp"
                   alt=""
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-0 h-full w-full rounded-[32px] object-cover opacity-40"
@@ -407,14 +409,10 @@ export default function MonIntelligenceSensoriellePage() {
             </ScrollReveal>
 
             
+            </div>
+          </section>
           </div>
         </section>
-         
-        </section>
-
-         
-
-       
 
         <ScrollReveal>
           <FlowerNavigation />

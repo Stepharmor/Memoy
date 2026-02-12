@@ -20,17 +20,19 @@ export default function CapteursPage() {
       <main className="relative z-10 pb-32">
         {/* Hero – Capteurs */}
         <section
-          className="mx-auto flex min-h-screen max-w-[1600px] flex-col bg-top bg-no-repeat px-6 pt-0 lg:px-10 xl:px-16"
+          className="relative flex min-h-screen w-full flex-col bg-cover bg-top bg-no-repeat pt-0 pb-24"
           style={{
             backgroundImage: "url('/img/Capteurs/BackgroundCapteurs.webp')",
             backgroundSize: "100% auto",
             backgroundPosition: "top center",
-            backgroundRepeat: "no-repeat",
           }}
         >
-          <Header />
+          <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-10 xl:px-16">
+            <Header />
+          </div>
 
-          <div className="relative mt-24 flex flex-1 flex-col items-center justify-center text-center lg:mt-32">
+          <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-10 xl:px-16">
+            <div className="relative mt-24 flex flex-1 flex-col items-center justify-center text-center lg:mt-32">
             
               <h1 className="mt-12 max-w-4xl text-balance text-[40px] font-normal leading-tight tracking-tight text-white sm:text-[52px] lg:text-[84px]">
               Capteurs et montres
@@ -65,10 +67,13 @@ export default function CapteursPage() {
                 </p>
               </div>
             </ScrollReveal>
+            </div>
           </div>
+        </section>
 
-          {/* Section Pourquoi des capteurs */}
-        <section className="mx-auto mt-24 max-w-[1600px] px-6 py-20 lg:px-10 xl:px-16">
+        {/* Section Pourquoi des capteurs */}
+        <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-10 xl:px-16">
+          <section className="mt-24 py-20">
           <div className="relative p-8 sm:p-12 lg:p-16">
             <div className="grid gap-12 lg:grid-cols-[2fr_3fr] lg:items-center">
               {/* Texte à gauche */}
@@ -138,12 +143,8 @@ export default function CapteursPage() {
               </div>
             </div>
           </div>
-        </section>
-        </section>
-
-        
-
-    
+          </section>
+        </div>
 
         {/* Fonctionnement hors connexion */}
         <section

@@ -15,7 +15,7 @@ export default function ModeHorsLignePage() {
         aria-hidden="true"
       >
         <img
-          src="/img/ModeHorsLigne/HaloPink.webp"
+          src="/img/ModeHorsLigne/HaloPink.png"
           alt=""
           className="mt-450 h-480 w-full object-cover object-center"
         />
@@ -33,7 +33,7 @@ export default function ModeHorsLignePage() {
         <section
           className="flex min-h-screen w-full flex-col bg-top bg-no-repeat px-6 pt-0 lg:px-10 xl:px-16"
           style={{
-            backgroundImage: "url('/img/ModeHorsLigne/backgroundModeHorLigne.webp')",
+            backgroundImage: "url('/img/ModeHorsLigne/backgroundModeHorLigne.png')",
             backgroundSize: "100% auto",
             backgroundPosition: "top center",
             backgroundRepeat: "no-repeat",
@@ -42,21 +42,20 @@ export default function ModeHorsLignePage() {
           <Header />
 
           <div className="relative mt-24 flex flex-1 flex-col items-center justify-center text-center lg:mt-56">
-            <ScrollReveal direction="up">
+           
               <h1 className="max-w-4xl text-balance text-[40px] font-normal leading-tight tracking-tight text-white sm:text-[52px] lg:text-[84px]">
               je fonctionne hors ligne
               </h1>
-            </ScrollReveal>
-            <ScrollReveal direction="up" delay={0.1}>
+           
               <p className="mt-16 max-w-3xl text-[20px] leading-relaxed text-slate-200/90 sm:text-[32px]">
               Je suis présente même quand 
               internet coupe.
               </p>
-            </ScrollReveal>
-            <ScrollReveal direction="up" delay={0.2} className="relative mt-32 flex justify-center">
+          
+            <div className="relative mt-32 flex justify-center">
               {/* Lueur HaloPresence sous presence.svg – pulsation */}
               <motion.img
-                src="/img/ModeHorsLigne/HaloPresence.webp"
+                src="/img/ModeHorsLigne/HaloPresence.png"
                 alt=""
                 aria-hidden="true"
                 className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[500%] w-[500%] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain"
@@ -76,7 +75,7 @@ export default function ModeHorsLignePage() {
                 aria-hidden="true"
                 className="relative z-10 mx-auto h-auto w-full max-w-2xl"
               />
-            </ScrollReveal>
+            </div>
           </div>
 
           {/* Section titre + sous-titre + image */}
@@ -90,12 +89,12 @@ export default function ModeHorsLignePage() {
             <ScrollReveal direction="up" delay={0.1}>
               <p className="mt-6 max-w-3xl text-[18px] leading-relaxed text-slate-200/90 sm:text-[20px]">
               Je suis conçue pour rester présente même quand internet coupe.
-Cela signifie que tu n’as pas besoin d’une connexion Wi‑Fi ou 4G constante pour que je t’accompagne. 
+Cela signifie que tu n’as pas besoin d’une connexion Wi-Fi ou 4G constante pour que je t’accompagne. 
               </p>
             </ScrollReveal>
             <ScrollReveal direction="up" delay={0.2} className="mt-12">
               <img
-                src="/img/ModeHorsLigne/FemmePrepareAManger.webp"
+                src="/img/ModeHorsLigne/FemmePrepareAManger.png"
                 alt="Une personne prépare à manger, accompagnée par Memoy"
                 className="mx-auto w-full max-w-4xl rounded-[24px] object-cover"
               />
@@ -226,7 +225,7 @@ Cela signifie que tu n’as pas besoin d’une connexion Wi‑Fi ou 4G constante
             className="star-rotate pointer-events-none absolute inset-0 z-[1] opacity-80"
             aria-hidden="true"
             style={{
-              backgroundImage: "url('/img/ModeHorsLigne/Star.webp')",
+              backgroundImage: "url('/img/ModeHorsLigne/Star.png')",
               backgroundSize: "auto 100%",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
@@ -276,7 +275,7 @@ Cela signifie que tu n’as pas besoin d’une connexion Wi‑Fi ou 4G constante
             className="pointer-events-none absolute inset-0 z-0"
             aria-hidden="true"
             style={{
-              backgroundImage: "url('/img/ModeHorsLigne/BackgroundConnexion.webp')",
+              backgroundImage: "url('/img/ModeHorsLigne/BackgroundConnexion.png')",
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
