@@ -140,7 +140,7 @@ export default function Home() {
                   l’espace et les habitudes, quand la mémoire devient fragile. Je parle en première
                   personne pour rester simple, rassurante et proche de la personne accompagnée.
                 </h3>
-                <Link href="/je-suis-memoy" className="inline-flex items-center justify-center whitespace-nowrap rounded-full bg-white p-6 text-[18px] font-medium text-slate-900 hover:bg-white/90">
+                <Link href="/je-suis-memoy" className="flex w-full items-center justify-center whitespace-normal rounded-full bg-white p-6 text-[18px] font-medium text-slate-900 hover:bg-white/90 md:inline-flex md:w-auto md:whitespace-nowrap">
                   En savoir plus
                 </Link>
               </div>
@@ -233,7 +233,7 @@ export default function Home() {
                   Je m’adapte à ton rythme, à tes routines et à ta manière de vivre, pour rester vraiment utile au quotidien.
                 </h3>
                 <div className="mt-2 flex items-center gap-64">
-                  <Link href="/pour-les-patients" className="inline-flex items-center justify-center whitespace-nowrap rounded-full bg-white px-8 py-6 text-[18px] font-medium text-slate-900 hover:bg-white/90">
+                  <Link href="/pour-les-patients" className="flex w-full items-center justify-center whitespace-normal rounded-full bg-white px-8 py-6 text-[18px] font-medium text-slate-900 hover:bg-white/90 md:inline-flex md:w-auto md:whitespace-nowrap">
                   Comment je t’aide au quotidien
                   </Link>
                   
@@ -260,7 +260,7 @@ export default function Home() {
                 Je rassure les proches en partageant des signaux essentiels, sans transformer la maison en lieu de surveillance.
                 </h3>
                 <div className="mt-2 flex items-center gap-64">
-                  <Link href="/pour-les-familles" className="inline-flex items-center justify-center whitespace-nowrap rounded-full bg-white px-8 py-6 text-[18px] font-medium text-slate-900 hover:bg-white/90">
+                  <Link href="/pour-les-familles" className="flex w-full items-center justify-center whitespace-normal rounded-full bg-white px-8 py-6 text-[18px] font-medium text-slate-900 hover:bg-white/90 md:inline-flex md:w-auto md:whitespace-nowrap">
                     Découvrir l’accompagnement des familles
                   </Link>
                 </div>
@@ -341,16 +341,19 @@ export default function Home() {
                         icon: "/img/Memoy-Icons/Entendre.svg",
                         text: "J'écoute les sons,",
                         maxWidth: "max-w-[240px]",
+                        iconSize: "h-84 w-84",
                       },
                       {
                         icon: "/img/Memoy-Icons/oeil.svg",
                         text: "j'observe les habitudes pour détecter ce qui change ou sort de l'ordinaire",
                         maxWidth: "max-w-[280px]",
+                        iconSize: "h-84 w-84",
                       },
                       {
                         icon: "/img/Memoy-Icons/Grandir.svg",
                         text: "J'alerte avec douceur",
                         maxWidth: "max-w-[200px]",
+                        iconSize: "h-48 w-48",
                       },
                     ].map((item, index) => (
                       <ScrollReveal key={index} delay={0.1 + index * 0.1}>
@@ -359,7 +362,7 @@ export default function Home() {
                             src={item.icon}
                             alt=""
                             aria-hidden="true"
-                            className="h-84 w-84 text-white"
+                            className={`${item.iconSize} text-white`}
                           />
                           <p className={`-mt-20 ${item.maxWidth} text-[16px] leading-relaxed text-white`}>
                             {item.text}
@@ -371,7 +374,7 @@ export default function Home() {
 
                   <ScrollReveal delay={0.4}>
                     <div className="mt-8 flex justify-center">
-                      <Link href="/mon-intelligence-sensorielle" className="inline-flex w-fit items-center justify-center whitespace-nowrap rounded-full bg-white px-8 py-6 text-[18px] font-medium text-slate-900 hover:bg-white/90">
+                      <Link href="/mon-intelligence-sensorielle" className="flex w-full items-center justify-center whitespace-normal rounded-full bg-white px-8 py-6 text-[18px] font-medium text-slate-900 hover:bg-white/90 md:inline-flex md:w-fit md:whitespace-nowrap">
                         Comprendre mon intelligence sensorielle
                       </Link>
                     </div>
@@ -393,7 +396,7 @@ export default function Home() {
                     Je peux m’appuyer sur des capteurs et des montres pour surveiller certains signaux vitaux importants.
                     Ces dispositifs sont pensés pour être discrets, respectueux et au service du bien-être, pas du contrôle.
                   </h3>
-                  <Link href="/capteurs" className="inline-flex items-center justify-center whitespace-nowrap rounded-full bg-white p-6 text-[18px] font-medium text-slate-900 hover:bg-white/90">
+                  <Link href="/capteurs" className="flex w-full items-center justify-center whitespace-normal rounded-full bg-white p-6 text-[18px] font-medium text-slate-900 hover:bg-white/90 md:inline-flex md:w-auto md:whitespace-nowrap">
                     Voir les capteurs et montres bientôt compatibles
                   </Link>
                 </div>
@@ -517,7 +520,7 @@ export default function Home() {
             </div>
 
             <div className="mt-8 flex justify-center">
-                <Link href="/mode-hors-ligne" className="inline-flex w-fit items-center justify-center whitespace-nowrap rounded-full bg-white px-8 py-6 text-[18px] font-medium text-slate-900 hover:bg-white/90">
+                <Link href="/mode-hors-ligne" className="flex w-full items-center justify-center whitespace-normal rounded-full bg-white px-8 py-6 text-[18px] font-medium text-slate-900 hover:bg-white/90 md:inline-flex md:w-fit md:whitespace-nowrap">
                   Découvrir le mode hors ligne
                 </Link>
               </div>
