@@ -1,26 +1,136 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #161722;
+  --foreground: #f9fafb;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-agrandir);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #161722;
+    --foreground: #f9fafb;
   }
 }
 
 body {
-  background: var(--background);
+  background: #161722;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-agrandir), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+/* Animation visible de la lueur du hero */
+.hero-lueur {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-lueur::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  background-image: url("/img/home/lueurBack.webp");
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center top;
+  opacity: 0.2; /* 50% */
+  pointer-events: none;
+  animation: hero-lueur-float cubic-bezier(0.68, -0.55, 0.265, 1.55) 40s infinite alternate;
+}
+
+@keyframes hero-lueur-float {
+  0% {
+    transform: translate(-400px, 0px);
+  }
+  25% {
+    transform: translate(-80px, 200px); 
+  }
+  50% {
+    transform: translate(-400px, 40px);
+  }
+  75% {
+     transform: translate(20px, 0px); 
+  }
+  100% {
+    transform: translate(560px, 130px);
+  }
+}
+
+/* Doux clignotement pour les points de séparation */
+.point-pulse {
+  animation: point-pulse 2.4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes point-pulse {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+/* HalloIntelligence : décalage bas + gauche en mobile uniquement */
+.hallo-intelligence-top {
+  top: calc(25% + 100px);
+}
+.hallo-intelligence-left {
+  margin-left: -80px;
+}
+@media (min-width: 1024px) {
+  .hallo-intelligence-top {
+    top: 25%;
+  }
+  .hallo-intelligence-left {
+    margin-left: 0;
+  }
+}
+
+/* Léger flottement vertical pour les mains du hero familles */
+@keyframes hand-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.hand-float {
+  animation: hand-float 6s ease-in-out infinite;
+}
+
+/* Rotation lente pour l’étoile (section Mode hors ligne) */
+@keyframes star-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.star-rotate {
+  animation: star-rotate 45s linear infinite;
+  transform-origin: center center;
 }
