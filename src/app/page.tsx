@@ -42,7 +42,12 @@ export default function Home() {
               <h1 className="mb-2 text-balance text-4xl font-normal leading-tight tracking-tight sm:text-5xl lg:text-[112px]">
                 Je suis{" "}
                 <span className="relative inline-block">
-                  <span className="relative z-10 text-[#FFBE5D]">Memoy</span>
+                  <img
+                    src="/img/logo.svg"
+                    alt="Memoy"
+                    className="relative z-10 inline-block h-[1.2em] sm:-mt-5 w-auto align-bottom"
+                    style={{ verticalAlign: "middle" }}
+                  />
                   <span
                     aria-hidden="true"
                     className="pointer-events-none absolute inset-x-[-0.5em] bottom-[-0em] h-[1.2em] -z-10 rounded-full bg-[#FFBE5D]/50 blur-lg"

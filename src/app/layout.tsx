@@ -17,9 +17,12 @@ const agrandir = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Memoy – L’app pour vos souvenirs",
+  title: "Memoy – Une présence douce qui veille ",
   description:
-    "Memoy est l’application mobile qui vous aide à capturer, organiser et revivre vos souvenirs les plus précieux.",
+    "Memoy est l'application mobile qui vous aide à capturer, organiser et revivre vos souvenirs les plus précieux.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
