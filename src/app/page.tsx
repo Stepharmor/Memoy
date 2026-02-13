@@ -89,7 +89,7 @@ export default function Home() {
                 {
                   title: "Garder les repères et le lien, partout",
                   body: "MEMOY aide à garder les repères et le lien avec les proches, même à distance et même sans internet.",
-                  icon: "/img/Memoy-Icons/CerclesDuo.svg",
+                  icon: "/img/Memoy-Icons/Duo.svg",
                 },
                 {
                   title: "La technologie au service de la dignité",
@@ -140,7 +140,7 @@ export default function Home() {
                   l’espace et les habitudes, quand la mémoire devient fragile. Je parle en première
                   personne pour rester simple, rassurante et proche de la personne accompagnée.
                 </h3>
-                <Link href="/je-suis-memoy" className="flex w-full items-center justify-center whitespace-normal rounded-full bg-white p-6 text-[18px] font-medium text-slate-900 hover:bg-white/90 md:inline-flex md:w-auto md:whitespace-nowrap">
+                <Link href="/je-suis-memoy" className="flex w-full items-center justify-center whitespace-normal rounded-full bg-white p-6 text-center text-[18px] font-medium text-slate-900 hover:bg-white/90 md:inline-flex md:w-auto md:whitespace-nowrap">
                   En savoir plus
                 </Link>
               </div>
@@ -149,7 +149,7 @@ export default function Home() {
             <ScrollReveal direction="left" delay={0.15}>
               <div className="relative flex justify-center lg:justify-end">
                 <motion.img
-                  src="/img/home/fondmobile.webp"
+                  src="/img/home/FondMobile.webp"
                   alt=""
                   aria-hidden="true"
                   className="pointer-events-none absolute bottom-[-240px] left-1/2 h-auto w-[980px] max-w-none -translate-x-[40%] -z-10"
@@ -233,7 +233,7 @@ export default function Home() {
                   Je m’adapte à ton rythme, à tes routines et à ta manière de vivre, pour rester vraiment utile au quotidien.
                 </h3>
                 <div className="mt-2 flex items-center gap-64">
-                  <Link href="/pour-les-patients" className="flex w-full items-center justify-center whitespace-normal rounded-full bg-white px-8 py-6 text-[18px] font-medium text-slate-900 hover:bg-white/90 md:inline-flex md:w-auto md:whitespace-nowrap">
+                  <Link href="/pour-les-patients" className="flex w-full items-center justify-center whitespace-normal rounded-full bg-white px-8 py-6 text-center text-[18px] font-medium text-slate-900 hover:bg-white/90 md:inline-flex md:w-auto md:whitespace-nowrap">
                   Comment je t’aide au quotidien
                   </Link>
                   
@@ -260,7 +260,7 @@ export default function Home() {
                 Je rassure les proches en partageant des signaux essentiels, sans transformer la maison en lieu de surveillance.
                 </h3>
                 <div className="mt-2 flex items-center gap-64">
-                  <Link href="/pour-les-familles" className="flex w-full items-center justify-center whitespace-normal rounded-full bg-white px-8 py-6 text-[18px] font-medium text-slate-900 hover:bg-white/90 md:inline-flex md:w-auto md:whitespace-nowrap">
+                  <Link href="/pour-les-familles" className="flex w-full items-center justify-center whitespace-normal rounded-full bg-white px-8 py-6 text-center text-[18px] font-medium text-slate-900 hover:bg-white/90 md:inline-flex md:w-auto md:whitespace-nowrap">
                     Découvrir l’accompagnement des familles
                   </Link>
                 </div>
@@ -286,14 +286,14 @@ export default function Home() {
           </section>
 
           {/* Mon intelligence sensorielle */}
-          <section className="relative mt-16 min-h-[900px] overflow-hidden py-16">
+          <section className="relative mt-16 min-h-[900px] overflow-visible py-16 lg:overflow-hidden">
             <ScrollReveal>
               <div className="relative flex min-h-[900px] flex-col items-center justify-center">
                 <img
                   src="/img/intelligence.webp"
                   alt=""
                   aria-hidden="true"
-                  className="absolute inset-0 h-full w-screen min-w-full scale-220 rotate-90 object-contain object-center lg:w-full lg:scale-100 lg:rotate-0"
+                  className="absolute left-1/2 top-1/2 h-full w-auto max-w-[200vw] -translate-x-1/2 -translate-y-1/2 scale-150 rotate-90 object-contain lg:inset-0 lg:w-full lg:scale-100 lg:rotate-0 lg:translate-x-0 lg:translate-y-0"
                 />
 
                 {/* Images flottantes HalloIntelligence */}
@@ -335,36 +335,41 @@ export default function Home() {
                     Mon intelligence sensorielle
                   </h2>
 
-                  <div className="-mt-10 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8">
+                  <div className="mt-24 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8">
                     {[
                       {
                         icon: "/img/Memoy-Icons/Entendre.svg",
                         text: "J'écoute les sons,",
                         maxWidth: "max-w-[240px]",
-                        iconSize: "h-84 w-84",
+                        iconSize: "h-48 w-48 sm:h-48 sm:w-64 lg:h-64 lg:w-64",
+                        marginTop: "mt-4",
                       },
                       {
                         icon: "/img/Memoy-Icons/oeil.svg",
                         text: "j'observe les habitudes pour détecter ce qui change ou sort de l'ordinaire",
                         maxWidth: "max-w-[280px]",
-                        iconSize: "h-84 w-84",
+                        iconSize: "h-32 w-32 sm:h-32 sm:w-48 lg:h-64 lg:w-48",
+                        marginTop: "mt-4",
                       },
                       {
                         icon: "/img/Memoy-Icons/Grandir.svg",
                         text: "J'alerte avec douceur",
                         maxWidth: "max-w-[200px]",
-                        iconSize: "h-48 w-48",
+                        iconSize: "h-32 w-42 sm:h-40 sm:w-40 lg:h-48 lg:w-48",
+                        marginTop: "mt-4",
                       },
                     ].map((item, index) => (
                       <ScrollReveal key={index} delay={0.1 + index * 0.1}>
                         <div className="flex flex-col items-center text-center">
-                          <img
-                            src={item.icon}
-                            alt=""
-                            aria-hidden="true"
-                            className={`${item.iconSize} text-white`}
-                          />
-                          <p className={`-mt-20 ${item.maxWidth} text-[16px] leading-relaxed text-white`}>
+                          <div className="flex h-24 items-center justify-center sm:h-64 lg:h-auto lg:pb-2">
+                            <img
+                              src={item.icon}
+                              alt=""
+                              aria-hidden="true"
+                              className={`${item.iconSize} text-white`}
+                            />
+                          </div>
+                          <p className={`${item.marginTop} lg:mt-2 ${item.maxWidth} text-[16px] leading-relaxed text-white`}>
                             {item.text}
                           </p>
                         </div>
@@ -374,7 +379,7 @@ export default function Home() {
 
                   <ScrollReveal delay={0.4}>
                     <div className="mt-8 flex justify-center">
-                      <Link href="/mon-intelligence-sensorielle" className="flex w-full items-center justify-center whitespace-normal rounded-full bg-white px-8 py-6 text-[18px] font-medium text-slate-900 hover:bg-white/90 md:inline-flex md:w-fit md:whitespace-nowrap">
+                      <Link href="/mon-intelligence-sensorielle" className="flex w-full items-center justify-center whitespace-normal rounded-full bg-white px-8 py-6 text-center text-[18px] font-medium text-slate-900 hover:bg-white/90 md:inline-flex md:w-fit md:whitespace-nowrap">
                         Comprendre mon intelligence sensorielle
                       </Link>
                     </div>
@@ -396,7 +401,7 @@ export default function Home() {
                     Je peux m’appuyer sur des capteurs et des montres pour surveiller certains signaux vitaux importants.
                     Ces dispositifs sont pensés pour être discrets, respectueux et au service du bien-être, pas du contrôle.
                   </h3>
-                  <Link href="/capteurs" className="flex w-full items-center justify-center whitespace-normal rounded-full bg-white p-6 text-[18px] font-medium text-slate-900 hover:bg-white/90 md:inline-flex md:w-auto md:whitespace-nowrap">
+                  <Link href="/capteurs" className="flex w-full items-center justify-center whitespace-normal rounded-full bg-white p-6 text-center text-[18px] font-medium text-slate-900 hover:bg-white/90 md:inline-flex md:w-auto md:whitespace-nowrap">
                     Voir les capteurs et montres bientôt compatibles
                   </Link>
                 </div>
@@ -438,7 +443,7 @@ export default function Home() {
             }}
           >
             <ScrollReveal>
-              <h2 className="mb-0 text-center text-[52px] font-normal tracking-tight text-white">
+              <h2 className="mb-0 text-center text-[32px] font-normal tracking-tight text-white sm:text-[40px] lg:text-[52px]">
                 Fonctionnement hors connexion
               </h2>
             </ScrollReveal>
@@ -520,7 +525,7 @@ export default function Home() {
             </div>
 
             <div className="mt-8 flex justify-center">
-                <Link href="/mode-hors-ligne" className="flex w-full items-center justify-center whitespace-normal rounded-full bg-white px-8 py-6 text-[18px] font-medium text-slate-900 hover:bg-white/90 md:inline-flex md:w-fit md:whitespace-nowrap">
+                <Link href="/mode-hors-ligne" className="flex w-full items-center justify-center whitespace-normal rounded-full bg-white px-8 py-6 text-center text-[18px] font-medium text-slate-900 hover:bg-white/90 md:inline-flex md:w-fit md:whitespace-nowrap">
                   Découvrir le mode hors ligne
                 </Link>
               </div>

@@ -5,8 +5,21 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 export default function PourLesPatientsPage() {
+  const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640); // sm breakpoint
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
   return (
     <div className="relative overflow-hidden bg-transparent text-slate-50">
       <main className="relative z-10 pb-32">
@@ -14,7 +27,7 @@ export default function PourLesPatientsPage() {
           className="relative flex min-h-screen w-full flex-col bg-cover bg-top bg-no-repeat pt-0 pb-24"
           style={{
             backgroundImage: "url('/img/PourLesPatients/BackgroundHero.webp')",
-            backgroundSize: "100% auto",
+            backgroundSize: "cover",
             backgroundPosition: "top center",
           }}
         >
@@ -25,7 +38,7 @@ export default function PourLesPatientsPage() {
             <div className="mt-32 flex flex-col items-center text-center">
               
                 <div className="mx-auto max-w-4xl space-y-6">
-                  <h1 className="text-[40px] font-normal leading-tight tracking-tight text-white sm:text-[52px] lg:text-[64px]">
+                  <h1 className="text-[52px] font-normal leading-tight tracking-tight text-white sm:text-[52px] lg:text-[64px]">
                   Je t'aide au quotidien
                   </h1>
                   <h2 className="text-[35px] leading-relaxed text-slate-200/85">
@@ -39,7 +52,7 @@ export default function PourLesPatientsPage() {
           {/* matin */}
           <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-10 xl:px-16">
             <section
-              className="relative mt-32 bg-no-repeat bg-center bg-[length:80%_auto] py-32"
+              className="relative mt-32 bg-no-repeat bg-center bg-[length:100%_auto] py-32 sm:bg-[length:90%_auto] lg:bg-[length:80%_auto]"
               style={{ backgroundImage: "url('/img/PourLesPatients/Sunrise.webp')" }}
             >
             
@@ -61,7 +74,7 @@ export default function PourLesPatientsPage() {
           {/* Trois cartes d'accompagnement – empilées puis déployées */}
           <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-10 xl:px-16">
             <section className="mt-24">
-            <div className="mx-auto grid max-w-5xl gap-8 pt-4 sm:grid-cols-3">
+            <div className="mx-auto grid max-w-5xl gap-8 pt-4 sm:grid-cols-3" suppressHydrationWarning>
               {([
                 {
                   title: "Je te rappelle où tu es, quel jour c'est, ce qui t'attend aujourd'hui.",
@@ -84,17 +97,20 @@ export default function PourLesPatientsPage() {
                   stackX: "-100%",
                   rotate: 12,
                 },
-              ] as const).map((card, index) => (
+              ] as const).map((card, index) => {
+                const shouldAnimate = mounted && !isMobile;
+                return (
                 <motion.div
                   key={card.title}
-                  initial={{ x: card.stackX, opacity: 1, scale: 0.92, rotate: card.rotate}}
-                  whileInView={{ x: "0%", opacity: 1, scale: 1, rotate: 0 }}
+                  initial={{ x: card.stackX, opacity: 1, scale: 0.92, rotate: card.rotate }}
+                  animate={shouldAnimate ? undefined : { x: 0, opacity: 1, scale: 1, rotate: 0 }}
+                  whileInView={shouldAnimate ? { x: "0%", opacity: 1, scale: 1, rotate: 0 } : undefined}
                   viewport={{ once: true, margin: "-350px" }}
-                  transition={{
+                  transition={shouldAnimate ? {
                     duration: 0.8,
                     delay: 0.1 + index * 0.12,
                     ease: [0.25, 0.1, 0.25, 1],
-                  }}
+                  } : { duration: 0 }}
                 >
                   <article className="h-full rounded-[24px] bg-[linear-gradient(-25deg,rgba(255, 255, 255, 0)_0%,rgba(255,255,255,0)_31%,rgba(255,255,255,0.12)_100%)] p-[1px]">
                     <div className="relative flex h-full flex-col justify-between gap-4 overflow-hidden rounded-[22px] bg-white/5 p-6 text-center backdrop-blur-[0px]">
@@ -104,24 +120,36 @@ export default function PourLesPatientsPage() {
                         aria-hidden="true"
                         className="pointer-events-none absolute left-1/2 top-[35%] h-full w-full min-w-[140%] -translate-x-1/2 object-cover object-center opacity-70"
                       />
-                      <motion.div
-                        className="relative z-10 space-y-2"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true, margin: "-350px" }}
-                        transition={{
-                          duration: 0.45,
-                          delay: 0.18 + index * 0.12,
-                          ease: [0.25, 0.1, 0.25, 1],
-                        }}
-                      >
-                        <h3 className="text-[22px] font-normal text-white">
-                          {card.title}
-                        </h3>
-                        <p className="mt-1 text-[15px] leading-relaxed text-slate-200/85">
-                          {card.body}
-                        </p>
-                      </motion.div>
+                      <div className={`relative z-10 space-y-2 ${mounted && !isMobile ? '' : 'opacity-100'}`}>
+                        {mounted && !isMobile ? (
+                          <motion.div
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true, margin: "-350px" }}
+                            transition={{
+                              duration: 0.45,
+                              delay: 0.18 + index * 0.12,
+                              ease: [0.25, 0.1, 0.25, 1],
+                            }}
+                          >
+                            <h3 className="text-[22px] font-normal text-white">
+                              {card.title}
+                            </h3>
+                            <p className="mt-1 text-[15px] leading-relaxed text-slate-200/85">
+                              {card.body}
+                            </p>
+                          </motion.div>
+                        ) : (
+                          <>
+                            <h3 className="text-[22px] font-normal text-white">
+                              {card.title}
+                            </h3>
+                            <p className="mt-1 text-[15px] leading-relaxed text-slate-200/85">
+                              {card.body}
+                            </p>
+                          </>
+                        )}
+                      </div>
                       {card.icon && (
                         <img
                           src={card.icon}
@@ -133,7 +161,8 @@ export default function PourLesPatientsPage() {
                     </div>
                   </article>
                 </motion.div>
-              ))}
+                );
+              })}
             </div>
           </section>
 
@@ -157,7 +186,7 @@ export default function PourLesPatientsPage() {
               src="/img/PourLesPatients/Sun.webp"
               alt=""
               aria-hidden="true"
-              className="pointer-events-none absolute left-1/2 top-0 h-[1260px] w-auto -translate-x-1/2 -translate-y-1/3 opacity-90 -z-30"
+              className="pointer-events-none absolute left-1/2 top-0 h-auto w-full max-w-[1260px] -translate-x-1/2 -translate-y-1/3 opacity-90 -z-30 object-contain sm:h-[1260px] sm:w-auto"
               animate={{ scale: [0.9, 1, 0.9], rotate: [0, 360] }}
               transition={{
                 duration: 50,
@@ -315,7 +344,7 @@ export default function PourLesPatientsPage() {
             className="pointer-events-none absolute left-1/2 top-130 h-[900px] w-auto -translate-x-1/2 opacity-80 -z-10"
           />
             <ScrollReveal>
-              <h2 className="mb-0 text-center text-[52px] font-normal tracking-tight text-white">
+              <h2 className="mb-0 text-center text-[32px] font-normal tracking-tight text-white sm:text-[40px] lg:text-[52px]">
               Les moments difficiles :
               <br />Je t'apporte une présence rassurante
               </h2>

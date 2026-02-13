@@ -5,8 +5,20 @@ import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import FlowerNavigation from "@/components/FlowerNavigation";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 export default function MonIntelligenceSensoriellePage() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <div className="relative overflow-hidden bg-transparent text-slate-50">
       {/* Fond étoiles comme sur les autres pages */}
@@ -20,20 +32,34 @@ export default function MonIntelligenceSensoriellePage() {
       <main className="relative z-10 pb-32">
         {/* Hero – Mon intelligence sensorielle */}
         <section
-          className="relative flex min-h-screen w-full flex-col bg-cover bg-top bg-no-repeat pt-0 pb-24"
-          style={{
-            backgroundImage:
-              "url('/img/MonIntelligenceSensorielle/BackgroundHero.webp')",
-            backgroundSize: "100% auto",
-            backgroundPosition: "top center",
-          }}
+          className="relative flex min-h-screen w-full flex-col bg-cover bg-top bg-no-repeat pt-0 pb-32 lg:pb-24 overflow-hidden"
         >
+          {/* Image de fond desktop */}
+          <div 
+            className="hidden lg:block absolute inset-0 bg-cover bg-top bg-no-repeat bg-center"
+            style={{
+              backgroundImage: "url('/img/MonIntelligenceSensorielle/BackgroundHero.webp')",
+              backgroundSize: "100% auto",
+              backgroundPosition: "top center",
+            }}
+          />
+          {/* Image de fond mobile avec rotation */}
+          <img
+            src="/img/MonIntelligenceSensorielle/BackgroundHero.webp"
+            alt=""
+            aria-hidden="true"
+            className="lg:hidden absolute left-1/2 top-0 h-screen w-auto object-cover -translate-x-1/2  origin-top"
+            style={{
+              minWidth: "100vh",
+            }}
+          />
+          <div className="relative z-10 flex min-h-screen w-full flex-col">
           <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-10 xl:px-16">
             <Header />
           </div>
 
           <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-10 xl:px-16">
-            <div className="relative mt-24 flex flex-1 flex-col items-center text-center lg:mt-32">
+            <div className="relative mt-24 flex flex-1 flex-col items-center text-center pb-16 lg:mt-32 lg:pb-24">
             {/* Effet HalloIntelligence flottant sous le header */}
             {[1, 2, 3].map((num, index) => {
               const baseLeft = `calc(30% + ${(index - 1) * 40}px)`;
@@ -54,7 +80,7 @@ export default function MonIntelligenceSensoriellePage() {
                   className="pointer-events-none hallo-intelligence-top hallo-intelligence-left w-[520px] h-auto sm:w-[560px] lg:w-[1200px]"
                   style={{
                     position: "absolute",
-                    top: "-10%",
+                    top: isMobile ? "10%" : "-10%",
                     left: "10%",
                     transform: "translate(-50%, -50%)",
                     zIndex: 5,
@@ -70,7 +96,7 @@ export default function MonIntelligenceSensoriellePage() {
             })}
 
             <div className="relative z-10">
-              <h1 className="mt-48 max-w-4xl text-balance text-[40px] font-normal leading-tight tracking-tight text-white sm:text-[52px] lg:text-[84px]">
+              <h1 className="mt-32 max-w-4xl text-balance text-[40px] font-normal leading-tight tracking-tight text-white sm:mt-48 sm:text-[52px] lg:text-[84px]">
                 Mon intelligence <br /> sensorielle
               </h1>
             </div>
@@ -85,7 +111,7 @@ export default function MonIntelligenceSensoriellePage() {
             
             </div>
           </div>
-
+          </div>
           {/* Bloc principal */}
           <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-10 xl:px-16">
             <section className="mx-auto mt-24 max-w-5xl">

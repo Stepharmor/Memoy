@@ -16,6 +16,12 @@ const navLinks = [
 export default function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Ensure component is mounted before using pathname to avoid hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -40,7 +46,7 @@ export default function Header() {
         <div className="inline-flex items-center gap-6 rounded-[50px] bg-white/10 px-6 py-4 backdrop-blur-md">
           <Link href="/" className="inline-flex items-center">
             <img
-              src="/img/logo.webp"
+              src="/img/logo.svg"
               alt="Memoy"
               className="h-6 w-auto"
             />
@@ -49,22 +55,20 @@ export default function Header() {
           {/* Desktop nav */}
           <nav className="hidden gap-6 text-[16px] font-medium text-white lg:flex">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive = mounted && pathname === link.href;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="relative flex flex-col items-center transition"
-                  style={{
-                    color: isActive ? "#FFBE5D" : undefined,
-                  }}
+                  className={`relative flex flex-col items-center transition ${
+                    isActive ? "text-[#FFBE5D]" : ""
+                  }`}
                 >
                   {link.label}
                   {isActive && (
                     <span
-                      className="absolute -bottom-2 h-[5px] w-[5px] rounded-full"
+                      className="absolute -bottom-2 h-[5px] w-[5px] rounded-full bg-[#FFBE5D]"
                       style={{
-                        backgroundColor: "#FFBE5D",
                         boxShadow: "0 0 6px 2px rgba(255,190,93,0.7)",
                       }}
                     />
@@ -116,17 +120,23 @@ export default function Header() {
         }`}
       >
         <nav className="flex flex-col items-center gap-8">
+          <Link href="/" onClick={() => setMenuOpen(false)} className="mb-4">
+            <img
+              src="/img/logo.svg"
+              alt="Memoy"
+              className="h-8 w-auto"
+            />
+          </Link>
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = mounted && pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="text-[24px] font-medium transition"
-                style={{
-                  color: isActive ? "#FFBE5D" : "#ffffff",
-                }}
+                className={`text-[24px] font-medium transition ${
+                  isActive ? "text-[#FFBE5D]" : "text-white"
+                }`}
               >
                 {link.label}
               </Link>

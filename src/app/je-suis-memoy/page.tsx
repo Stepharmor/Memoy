@@ -6,8 +6,15 @@ import ScrollReveal from "@/components/ScrollReveal";
 import VivusIcon from "@/components/VivusIcon";
 import FlowerNavigation from "@/components/FlowerNavigation";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 export default function JeSuisMemoyPage() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <div className="relative overflow-hidden bg-transparent text-slate-50">
       {/* Fond étoiles comme sur la home */}
@@ -26,17 +33,17 @@ export default function JeSuisMemoyPage() {
           <div className="mt-0 relative flex flex-col items-center gap-16 text-center">
             {/* Visuel centré en premier */}
            
-              <div className="relative flex flex-col items-center justify-center gap-10">
+              <div className="relative flex flex-col items-center justify-center gap-10 w-full">
                 {/* Wrapper carré pour les stars + mobile */}
-                <div className="relative flex h-[1008px] w-[1008px] items-center justify-center">
+                <div className="relative flex h-[600px] w-full max-w-[1008px] items-center justify-center sm:h-[800px] lg:h-[1008px]">
                   {/* Stars centrées derrière le mobile, rotation continue avec vitesses/directions variées */}
                   <motion.img
                     src="/img/JeSuisMemoy/Star 1.webp"
                     alt=""
                     aria-hidden="true"
                     className="pointer-events-none absolute inset-0 m-auto"
-                    initial={{ rotate: 0 }}
-                    animate={{ rotate: 360 }}
+                    initial={mounted ? { rotate: 0 } : false}
+                    animate={mounted ? { rotate: 360 } : false}
                     transition={{
                       duration: 80,
                       repeat: Infinity,
@@ -48,8 +55,8 @@ export default function JeSuisMemoyPage() {
                     alt=""
                     aria-hidden="true"
                     className="pointer-events-none absolute inset-0 m-auto"
-                    initial={{ rotate: 45 }}
-                    animate={{ rotate: -360 }}
+                    initial={mounted ? { rotate: 45 } : false}
+                    animate={mounted ? { rotate: -360 } : false}
                     transition={{
                       duration: 60,
                       repeat: Infinity,
@@ -61,8 +68,8 @@ export default function JeSuisMemoyPage() {
                     alt=""
                     aria-hidden="true"
                     className="pointer-events-none absolute inset-0 m-auto"
-                    initial={{ rotate: -30 }}
-                    animate={{ rotate: 360 }}
+                    initial={mounted ? { rotate: -30 } : false}
+                    animate={mounted ? { rotate: 360 } : false}
                     transition={{
                       duration: 90,
                       repeat: Infinity,
@@ -74,8 +81,8 @@ export default function JeSuisMemoyPage() {
                     alt=""
                     aria-hidden="true"
                     className="pointer-events-none absolute inset-0 m-auto"
-                    initial={{ rotate: 90 }}
-                    animate={{ rotate: -360 }}
+                    initial={mounted ? { rotate: 90 } : false}
+                    animate={mounted ? { rotate: -360 } : false}
                     transition={{
                       duration: 70,
                       repeat: Infinity,
@@ -88,7 +95,8 @@ export default function JeSuisMemoyPage() {
                     src="/img/JeSuisMemoy/mobileFlat.webp"
                     alt="Aperçu de l’application Memoy"
                     className="relative z-30 h-auto w-[260px] sm:w-[300px] lg:w-[340px]"
-                    animate={{ y: [0, -10, 0] }}
+                    initial={mounted ? undefined : false}
+                    animate={mounted ? { y: [0, -10, 0] } : false}
                     transition={{
                       duration: 6,
                       repeat: Infinity,
@@ -96,8 +104,8 @@ export default function JeSuisMemoyPage() {
                     }}
                   />
                 </div>
-                <div className="-mt-16 mx-auto max-w-3xl space-y-6">
-                  <p className="text-[22px] leading-relaxed text-slate-200/85">
+                <div className="-mt-16 mx-auto w-full max-w-3xl space-y-6 px-4 sm:px-6">
+                  <p className="text-[18px] leading-relaxed text-slate-200/85 sm:text-[22px] break-words">
                     Quand la mémoire vacille, les repères deviennent plus fragiles : les dates,
                     les habitudes, les personnes, parfois même les lieux familiers. Je suis là
                     pour rendre ce quotidien plus doux, plus compréhensible, plus sécurisé,
@@ -218,7 +226,8 @@ export default function JeSuisMemoyPage() {
                         transform: "translate(-50%, -50%)",
                         zIndex: 5,
                       }}
-                      animate={{ x: animateX }}
+                      initial={mounted ? undefined : false}
+                      animate={mounted ? { x: animateX } : false}
                       transition={{
                         duration: 6 + index, // vitesses légèrement différentes
                         repeat: Infinity,
@@ -229,7 +238,7 @@ export default function JeSuisMemoyPage() {
                 })}
 
                 <div className="relative z-10 flex w-full max-w-4xl flex-col items-center justify-center text-center">
-                  <h2 className="mb-0 -mt-32 text-center text-[52px] font-normal tracking-tight text-white">
+                  <h2 className="mb-0 -mt-32 text-center text-[28px] font-normal tracking-tight text-white sm:text-[40px] lg:text-[52px]">
                     Une présence fondée sur la confiance et la dignité
                   </h2>
                   <p className="mt-4 text-[18px] leading-relaxed text-slate-200/85">

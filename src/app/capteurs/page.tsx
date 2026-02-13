@@ -5,8 +5,20 @@ import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import { motion } from "framer-motion";
 import FlowerNavigation from "@/components/FlowerNavigation";
+import { useState, useEffect } from "react";
 
 export default function CapteursPage() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <div className="relative overflow-hidden bg-transparent text-slate-50">
       {/* Fond étoiles comme sur les autres pages */}
@@ -23,8 +35,9 @@ export default function CapteursPage() {
           className="relative flex min-h-screen w-full flex-col bg-cover bg-top bg-no-repeat pt-0 pb-24"
           style={{
             backgroundImage: "url('/img/Capteurs/BackgroundCapteurs.webp')",
-            backgroundSize: "100% auto",
+            backgroundSize: isMobile ? "cover" : "100% auto",
             backgroundPosition: "top center",
+            minHeight: isMobile ? "800px" : "100vh",
           }}
         >
           <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-10 xl:px-16">
@@ -158,7 +171,7 @@ export default function CapteursPage() {
             className="pointer-events-none absolute left-1/2 top-130 h-[900px] w-auto -translate-x-1/2 opacity-80 -z-10"
           />
             <ScrollReveal>
-              <h2 className="mb-0 text-center text-[52px] font-normal tracking-tight text-white">
+              <h2 className="mb-0 text-center text-[32px] font-normal tracking-tight text-white sm:text-[40px] lg:text-[52px]">
               Pas de surveillance, une présence utile
                 </h2>
               <p className="mb-0 text-center"> Les capteurs et montres restent des outils au service de ta dignité.</p>

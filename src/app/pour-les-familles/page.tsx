@@ -5,7 +5,22 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ScrollReveal from "@/components/ScrollReveal";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+
 export default function PourLesFamillesPage() {
+  const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640); // sm breakpoint
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <div className="relative overflow-hidden bg-transparent text-slate-50">
       {/* Fond étoiles comme sur les autres pages */}
@@ -28,20 +43,20 @@ export default function PourLesFamillesPage() {
                 src="/img/PourLesFamilles/BackgroundHero.webp"
                 alt=""
                 aria-hidden="true"
-                className="block w-full h-auto object-cover"
+                className="block w-full h-[600px] object-cover sm:h-auto"
               />
                 {/* Mains : reveal au chargement, après le texte */}
                 <ScrollReveal
                   trigger="mount"
                   direction="left"
                   delay={1}
-                  className="pointer-events-none absolute top-0 right-0 h-[340px] w-auto"
+                  className="pointer-events-none absolute top-0 right-0 h-[280px] w-auto"
                 >
                   <motion.img
                     src="/img/PourLesFamilles/HandTop.webp"
                     alt=""
                     aria-hidden="true"
-                    className="h-full w-auto opacity-95"
+                    className="h-full w-auto opacity-95 object-contain"
                     animate={{ y: [0, -10, 0] }}
                     transition={{
                       duration: 3,
@@ -55,13 +70,13 @@ export default function PourLesFamillesPage() {
                   trigger="mount"
                   direction="right"
                   delay={0.75}
-                  className="pointer-events-none absolute top-100 left-0 h-[340px] w-auto"
+                  className="pointer-events-none absolute top-100 left-0 h-[280px] w-auto"
                 >
                   <motion.img
                     src="/img/PourLesFamilles/HandBottom.webp"
                     alt=""
                     aria-hidden="true"
-                    className="h-full w-auto opacity-95"
+                    className="h-full w-auto opacity-95 object-contain"
                     animate={{ y: [0, -10, 0] }}
                     transition={{
                       duration: 5,
@@ -129,17 +144,20 @@ export default function PourLesFamillesPage() {
                   stackX: "-100%",
                   rotate: 12,
                 },
-              ] as const).map((card, index) => (
+              ] as const).map((card, index) => {
+                const shouldAnimate = mounted && !isMobile;
+                return (
                 <motion.div
                   key={card.title}
-                  initial={{ x: card.stackX, opacity: 1, scale: 0.92, rotate: card.rotate}}
-                  whileInView={{ x: "0%", opacity: 1, scale: 1, rotate: 0 }}
+                  initial={{ x: card.stackX, opacity: 1, scale: 0.92, rotate: card.rotate }}
+                  animate={shouldAnimate ? undefined : { x: 0, opacity: 1, scale: 1, rotate: 0 }}
+                  whileInView={shouldAnimate ? { x: "0%", opacity: 1, scale: 1, rotate: 0 } : undefined}
                   viewport={{ once: true, margin: "-350px" }}
-                  transition={{
+                  transition={shouldAnimate ? {
                     duration: 0.8,
                     delay: 0.1 + index * 0.12,
                     ease: [0.25, 0.1, 0.25, 1],
-                  }}
+                  } : { duration: 0 }}
                 >
                   <article className="h-full rounded-[24px] bg-[linear-gradient(-25deg,rgba(255, 255, 255, 0)_0%,rgba(255,255,255,0)_31%,rgba(255,255,255,0.12)_100%)] p-[1px]">
                     <div className="relative flex h-full flex-col justify-between gap-4 overflow-hidden rounded-[22px] bg-white/5 p-6 text-center backdrop-blur-[0px]">
@@ -147,26 +165,38 @@ export default function PourLesFamillesPage() {
                         src="/img/CardBackground.webp"
                         alt=""
                         aria-hidden="true"
-                        className="pointer-events-none absolute left-1/2 top-[35%] h-full w-full min-w-[140%] -translate-x-1/2 object-cover object-center opacity-70"
+                        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center opacity-70"
                       />
-                      <motion.div
-                        className="relative z-10 space-y-2"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true, margin: "-350px" }}
-                        transition={{
-                          duration: 0.45,
-                          delay: 0.18 + index * 0.12,
-                          ease: [0.25, 0.1, 0.25, 1],
-                        }}
-                      >
-                        <h3 className="text-[22px] font-normal text-white">
-                          {card.title}
-                        </h3>
-                        <p className="mt-1 text-[15px] leading-relaxed text-slate-200/85">
-                          {card.body}
-                        </p>
-                      </motion.div>
+                      <div className={`relative z-10 space-y-2 ${mounted && !isMobile ? '' : 'opacity-100'}`}>
+                        {mounted && !isMobile ? (
+                          <motion.div
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true, margin: "-350px" }}
+                            transition={{
+                              duration: 0.45,
+                              delay: 0.18 + index * 0.12,
+                              ease: [0.25, 0.1, 0.25, 1],
+                            }}
+                          >
+                            <h3 className="text-[22px] font-normal text-white">
+                              {card.title}
+                            </h3>
+                            <p className="mt-1 text-[15px] leading-relaxed text-slate-200/85">
+                              {card.body}
+                            </p>
+                          </motion.div>
+                        ) : (
+                          <>
+                            <h3 className="text-[22px] font-normal text-white">
+                              {card.title}
+                            </h3>
+                            <p className="mt-1 text-[15px] leading-relaxed text-slate-200/85">
+                              {card.body}
+                            </p>
+                          </>
+                        )}
+                      </div>
                       {card.icon && (
                         <img
                           src={card.icon}
@@ -178,7 +208,8 @@ export default function PourLesFamillesPage() {
                     </div>
                   </article>
                 </motion.div>
-              ))}
+                );
+              })}
             </div>
             </section>
           </div>
@@ -292,7 +323,7 @@ export default function PourLesFamillesPage() {
             className="pointer-events-none absolute left-1/2 top-130 h-[900px] w-auto -translate-x-1/2 opacity-80 -z-10"
           />
             <ScrollReveal>
-              <h2 className="mb-0 text-center text-[52px] font-normal tracking-tight text-white">
+              <h2 className="mb-0 text-center text-[32px] font-normal tracking-tight text-white sm:text-[40px] lg:text-[52px]">
               Réduire le stress, l’épuisement, la culpabilité
                 </h2>
               <p className="mb-0 text-center"> Accompagner un proche avec des troubles de mémoire, c’est épuisant.</p>

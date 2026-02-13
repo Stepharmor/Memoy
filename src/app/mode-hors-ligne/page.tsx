@@ -34,7 +34,7 @@ export default function ModeHorsLignePage() {
           className="flex min-h-screen w-full flex-col bg-top bg-no-repeat px-6 pt-0 lg:px-10 xl:px-16"
           style={{
             backgroundImage: "url('/img/ModeHorsLigne/backgroundModeHorLigne.png')",
-            backgroundSize: "100% auto",
+            backgroundSize: "180% auto",
             backgroundPosition: "top center",
             backgroundRepeat: "no-repeat",
           }}
