@@ -249,7 +249,7 @@ export default function JeSuisMemoyPage() {
                   <div className="mt-12 grid w-full max-w-4xl grid-cols-1 gap-10 sm:grid-cols-2">
                     {[
                       {
-                        icon: "/img/Memoy-Icons/home.svg",
+                        icon: "/img/Memoy-Icons/Home.svg",
                         text: "Tes données restent chez toi.",
                       },
                       {

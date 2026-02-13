@@ -134,7 +134,7 @@ Je ne crée pas de profil marketing sur toi. Je ne vends pas tes données à des
                   </div>
                   <div className="shrink-0">
                     <img
-                      src="/img/Memoy-Icons/Heart.svg"
+                      src="/img/Memoy-Icons/heart.svg"
                       alt=""
                       aria-hidden="true"
                       className="h-[140px] w-[140px] object-contain opacity-95 sm:h-[160px] sm:w-[160px] lg:h-[180px] lg:w-[180px]"

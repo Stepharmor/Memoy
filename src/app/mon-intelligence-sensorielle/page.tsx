@@ -408,7 +408,7 @@ export default function MonIntelligenceSensoriellePage() {
                 <div className="relative mt-10 grid gap-8 sm:grid-cols-3">
                   {[
                     {
-                      icon: "/img/Memoy-Icons/Together.svg",
+                      icon: "/img/Memoy-Icons/together.svg",
                       body: "Je n’écoute que ce qui m’aide à mieux t’accompagner.",
                     },
                     {

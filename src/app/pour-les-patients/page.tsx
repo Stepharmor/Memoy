@@ -260,14 +260,14 @@ export default function PourLesPatientsPage() {
           />
           {/* Moon background – sous la lune */}
           <img
-            src="/img/PourLesPatients/moonBackground.webp"
+            src="/img/PourLesPatients/MoonBackground.webp"
             alt=""
             aria-hidden="true"
             className="pointer-events-none absolute -bottom-100 -right-60 h-auto w-auto -z-20"
           />
           {/* Lune en bas à droite */}
           <img
-            src="/img/PourLesPatients/moon.webp"
+            src="/img/PourLesPatients/Moon.webp"
             alt=""
             aria-hidden="true"
             className="pointer-events-none absolute w-[600px] h-auto -bottom-50 -right-30 opacity-80 -z-10"
