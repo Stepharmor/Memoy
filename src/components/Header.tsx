@@ -44,7 +44,7 @@ export default function Header() {
     <>
       <div className="fixed left-0 right-0 top-6 z-50 flex w-full justify-center px-4">
         <div className="inline-flex items-center gap-6 rounded-[50px] bg-white/10 px-6 py-4 backdrop-blur-md">
-          <Link href="/" className="inline-flex items-center">
+          <Link href="/" className="inline-flex items-center -mt-2">
             <img
               src="/img/logo.svg"
               alt="Memoy"
@@ -119,7 +119,7 @@ export default function Header() {
             : "pointer-events-none opacity-0"
         }`}
       >
-        <nav className="flex flex-col items-center gap-8">
+        <nav className="flex flex-col items-center gap-8 mt-16">
           <Link href="/" onClick={() => setMenuOpen(false)} className="mb-4">
             <img
               src="/img/logo.svg"
